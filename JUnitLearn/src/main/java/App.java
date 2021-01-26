@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class App {
@@ -18,10 +17,6 @@ public class App {
         }
         if (!writePermission) {
             throw new RuntimeException("Прилетело исключение RuntimeException");
-        }
-        int[] newArray = new int[finalArray.size()];
-        for (int i = 0; i < newArray.length; i++) {
-            newArray[i] = finalArray.get(i);
         }
         return finalArray.toArray(new Integer[0]);
     }
