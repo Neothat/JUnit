@@ -8,8 +8,8 @@ public class App {
         System.out.println(methodTwo(new int[]{1, 1, 1, 4, 4, 1, 1}));
     }
 
-    private static Integer[] methodOne(int[] setOfNumbers) {
-        LinkedList<Integer> finalArray = new LinkedList<Integer>();
+    public static Integer[] methodOne(int[] setOfNumbers) {
+        LinkedList<Integer> finalArray = new LinkedList<>();
         boolean writePermission = false;
 
         for (int number : setOfNumbers) {
@@ -24,10 +24,14 @@ public class App {
         if (!writePermission) {
             throw new RuntimeException("Прилетело исключение RuntimeException");
         }
+        int[] newArray = new int[finalArray.size()];
+        for (int i = 0; i < newArray.length; i++) {
+            newArray[i] = finalArray.get(i);
+        }
         return finalArray.toArray(new Integer[0]);
     }
 
-    private static boolean methodTwo(int[] setOfNumbers) {
+    public static boolean methodTwo(int[] setOfNumbers) {
         boolean numberOne = false;
         boolean numberFour = false;
         boolean differentNumber = false;
