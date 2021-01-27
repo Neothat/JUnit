@@ -1,24 +1,14 @@
-import java.util.LinkedList;
+import java.util.Arrays;
 
 public class App {
 
-    public Integer[] methodOne(int[] setOfNumbers) {
-        LinkedList<Integer> finalArray = new LinkedList<>();
-        boolean writePermission = false;
-
-        for (int number : setOfNumbers) {
-            if (writePermission) {
-                finalArray.add(number);
-            }
-            if (number == 4) {
-                writePermission = true;
-                finalArray.clear();
+    public int[] methodOne(int[] setOfNumbers) {
+        for (int i = setOfNumbers.length - 1; i >= 0; i--) {
+            if (setOfNumbers[i] == 4) {
+                return Arrays.copyOfRange(setOfNumbers, i + 1, setOfNumbers.length);
             }
         }
-        if (!writePermission) {
-            throw new RuntimeException("Прилетело исключение RuntimeException");
-        }
-        return finalArray.toArray(new Integer[0]);
+        throw new RuntimeException("В массиве нет 4");
     }
 
     public boolean methodTwo(int[] setOfNumbers) {

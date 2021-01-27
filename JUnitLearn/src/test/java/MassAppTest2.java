@@ -8,8 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class MassAppTest {
-
+public class MassAppTest2 {
     static App app;
 
     @BeforeClass
@@ -17,25 +16,26 @@ public class MassAppTest {
         app = new App();
     }
 
-    int[] output;
     int[] input;
+    boolean flag;
 
-    public MassAppTest(int[] output, int[] input) {
-        this.output = output;
+    public MassAppTest2(int[] input, boolean flag) {
         this.input = input;
+        this.flag = flag;
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {new int[]{1, 7}, new int[]{1, 2, 5, 3, 4, 4, 6, 6, 4, 1, 7}},
-                {new int[]{6, 6, 1, 7}, new int[]{1, 2, 5, 3, 4, 4, 6, 6, 1, 7}},
-                {new int[]{}, new int[]{1, 2, 5, 3, 6, 6, 1, 7}}
+                {new int[]{1, 1, 1, 4, 4, 1, 4, 4}, true},
+                {new int[]{1, 1, 1, 1}, false},
+                {new int[]{ 4, 4, 4, 4}, false},
+                {new int[]{1, 1, 1, 4, 4, 1, 4, 3}, false}
         });
     }
 
     @Test
-    public void testMethodOne() {
-        Assert.assertArrayEquals(output, app.methodOne(input));
+    public void testMethodTwo(){
+        Assert.assertEquals(flag, app.methodTwo(input));
     }
 }
